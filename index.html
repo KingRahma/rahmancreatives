@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kayan Eltamyoz - Landing Page</title>
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #004e64;
+      --secondary: #ca8e48;
+      --bg-light: #ffffff;
+      --bg-dark: #111827;
+      --text-light: #f9fafb;
+      --text-dark: #ca8e48;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      transition: all 0.3s ease-in-out;
+    }
+
+    body.dark {
+      background: var(--bg-dark);
+      color: var(--text-light);
+    }
+
+    .page {
+      background: var(--primary);
+      color: var(--text-light);
+      width: 90%;
+      max-width: 600px;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+      text-align: center;
+    }
+
+    header img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: #fff;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 3px solid #ca8e48;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin: 0.5rem 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    /* Typewriter Effect */
+    .typewriter {
+      font-size: 1rem;
+      font-weight: bold;
+      color: var(--secondary);
+      margin-bottom: 20px;
+      min-height: 30px;
+    }
+
+    .social-icons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 1.5rem 0;
+    }
+
+    .social-icons button {
+      border: none;
+      border-radius: 12px;
+      padding: 12px;
+      cursor: pointer;
+      background: #ffffff;
+      transition: background 0.3s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    body.dark .social-icons{
+      background: #1e293b;
+      
+    }
+
+    .social-icons button:hover {
+      background: var(--secondary);
+    }
+
+    .social-icons a {
+      color: var(--primary);
+      font-size: 1.1rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .footer {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* Controls */
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .controls button {
+      background: transparent;
+      border: 2px solid #fff;
+      border-radius: 8px;
+      color: #fff;
+      padding: 6px 10px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .controls button:hover {
+      background: #fff;
+      color: var(--primary);
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.4rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      .social-icons a {
+        font-size: 1rem;
+      }
+
+      header img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #fff;
+      padding: 4px;
+      margin-bottom: 10px;
+      border: 3px solid #5aee5c;
+    }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Theme + Language Controls -->
+    <div class="controls">
+      <button id="themeToggle">🌙 Dark</button>
+      <button id="langToggle">🇬🇧 EN</button>
+    </div>
+
+    <header>
+      <img src="brand_Image_Edited_Sharper.png" alt="Logo">
+      <h1 id="companyName">Rahman Creatives</h1>
+      <p id="tagline">Media is Our Life</p>
+      <div class="typewriter" id="typewriter"></div>
+    </header>
+
+    <div class="social-icons">
+      <button><a href="https://www.facebook.com/king.rahman.737/"><i class="fa-brands fa-facebook-f"></i> Facebook</a></button>
+      <button><a href="https://wa.me/971585223276"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></button>
+      <button><a href="https://www.tiktok.com/@kingrahman82?lang=en"><i class="fa-brands fa-tiktok"></i> TikTok</a></button>
+      <button><a href="https://www.instagram.com/kingrahman993/"><i class="fa-brands fa-instagram"></i> Instagram</a></button>
+      <button><a href="https://www.linkedin.com/in/abdul-rahman-kconteh/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></button>
+      <button><a href="https://doublemstudios.tech/"><i class="fa-solid fa-globe"></i> Website</a></button>
+    </div>
+
+    <div class="footer">
+      <p>© 2025 Rahman Creatives. All rights reserved.</p>
+    </div>
+  </div>
+
+  <script>
+    // Typewriter Effect
+    const services = [
+      "Motion Graphics",
+      "Video Editing",
+      "Ai Content creation",
+      "Graphics Designing",
+      "Sound Producing"
+    ];
+    let i = 0, j = 0, current = "", isDeleting = false;
+    const typewriter = document.getElementById("typewriter");
+
+    function typeEffect() {
+      if (i < services.length) {
+        if (!isDeleting && j <= services[i].length) {
+          current = services[i].substring(0, j++);
+        } else if (isDeleting && j >= 0) {
+          current = services[i].substring(0, j--);
+        }
+        typewriter.textContent = current;
+
+        if (!isDeleting && j === services[i].length) {
+          setTimeout(() => isDeleting = true, 1000);
+        } else if (isDeleting && j < 0) {
+          isDeleting = false;
+          i = (i + 1) % services.length;
+        }
+      }
+      setTimeout(typeEffect, isDeleting ? 50 : 100);
+    }
+    typeEffect();
+
+    // Theme Toggle
+    const themeBtn = document.getElementById("themeToggle");
+    themeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      themeBtn.textContent = document.body.classList.contains("dark") ? "☀️ Light" : "🌙 Dark";
+    });
+
+    // Language Toggle
+    const langBtn = document.getElementById("langToggle");
+    const companyName = document.getElementById("companyName");
+    const tagline = document.getElementById("tagline");
+
+    let isArabic = false;
+    langBtn.addEventListener("click", () => {
+      isArabic = !isArabic;
+      if (isArabic) {
+        companyName.textContent = "إبداعات الرحمن";
+        tagline.textContent = "الإعلام هو حياتنا";
+        langBtn.textContent = "🇦🇪 AR";
+        document.body.dir = "rtl";
+      } else {
+        companyName.textContent = "Rahman Creatives";
+        tagline.textContent = "Media is our Life";
+        langBtn.textContent = "🇬🇧 EN";
+        document.body.dir = "ltr";
+      }
+    });
+  </script>
+</body>
+</html>
